@@ -12,14 +12,14 @@ yarn-error.log
 .env
 composer.lock
 .DS_Store
--------------------
+
+# -------------------
 /resources/views/vendor
 /resources/assets/vendor
 /public/fonts/
 /public/mix-manifest.json
 /public/css
 /public/js
-
 app/User.php
 app/HasRoles.php
 app/LoginSession.php

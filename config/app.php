@@ -188,6 +188,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\DesktopServiceProvider::class,        
         Collective\Html\HtmlServiceProvider::class,
+        Shopex\CrudGenerator\CrudGeneratorServiceProvider::class,
         Shopex\Luban\Providers\LubanProvider::class,
         Shopex\LubanAdmin\Providers\LubanAdminProvider::class,
 
