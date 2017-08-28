@@ -191,6 +191,7 @@ return [
         Shopex\CrudGenerator\CrudGeneratorServiceProvider::class,
         Shopex\Luban\Providers\LubanProvider::class,
         Shopex\LubanAdmin\Providers\LubanAdminProvider::class,
+        Shopex\LubanAuth\Providers\LubanAuthProvider::class,
 
     ],
 
