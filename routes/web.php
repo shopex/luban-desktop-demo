@@ -15,15 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 Admin::routes();
 
 Route::get('/profile', function () {
     return redirect(Luban::config()->get('sso_url').'profile');
-});
+})->name('admin-profile');
 
 Route::get('/admin-site-menus', function(){
 	return [];
-})->middleware('auth');
+})->middleware('auth')->name('admin-site-menus');
 
 Route::get('/home', 'HomeController@index')->name('home');
