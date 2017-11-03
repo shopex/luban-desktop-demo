@@ -1,3 +1,5 @@
+# Shopex luban-desktop使用说明
+
 luban-desktop是商派在Laravel 5.4的基础上开发的一款现代化的框架，其重构了商派原有ECOS框架的实用功能，可以极大的提高项目开发的效率。
 
 本框架除Laravel原有功能，还包含下面的包:
@@ -11,7 +13,8 @@ luban-desktop是商派在Laravel 5.4的基础上开发的一款现代化的框�
 composer create-project shopex/luban-desktop myproj dev-master
 ```
 安装过程中会提示`Do you want to remove the existing VCS (.git, .svn..) history? [Y,n]?`，是否需要删除版本信息，选择`Y`，删除，选择`n`不删除。
-此过程成包含以下步骤：
+
+`composer create-project`过程成包含以下步骤：
 ```
 git clone https://github.com/shopex/luban-desktop.git myproj
 cd myproj
@@ -21,7 +24,7 @@ php artisan optimize
 php artisan key:generate
 ```
 ## 二、初始化项目
-1、将laravel扩展包发布到资源目录
+1、将laravel扩展包资源发布到资源目录
 ```
 php artisan vendor:publish
 ```
@@ -55,10 +58,31 @@ npm run production
 
 ```
 如果是前端开发可以运行`npm run watch-poll`来监控资源文件修改，自动编译资源
-## 三、运行
+## 三、配置项目
+### 1、配置数据库
+在`.env`里面配置数据库信息
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
+2、创建数据库
+```
+php artisan migrate
+```
+3、配置ETCD
+如果是微服务架构，则需要配置ETCD的地址，目前本项目在ETCD里面保存了SSO的相关信息：
+``` 
+ETCD_ADDR=http://192.168.10.96:2379
+ETCD_CONFIG_PATH=/luban/config/devops
+```
+## 四、运行
 luban-desktop支持四种方式运行项目代码：
 ### 1、artisan
-php内置Server
+php内置Serve
 ```
 php artisan serve
 ```
