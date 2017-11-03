@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Admin::routes();
-
+Auth::routes();
 Route::get('/profile', function () {
     return redirect(Luban::config()->get('sso_url').'profile');
 })->name('admin-profile');
