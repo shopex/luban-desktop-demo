@@ -10,19 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::Group(['middleware'=>'auth'],function(){
+	Route::get('/', array('as'=>'welcome',function () {
+	    return view('welcome');
+	}) );
+	
+	Auth::routes();
+	Route::get('/profile', array( 'as'=>'admin-profile', function () {
+	    return redirect(Luban::config()->get('sso_url').'profile');
+	}));
 
-Route::get('/', function () {
-    return view('welcome');
-});
+	Route::get('/admin-site-menus', function(){
+		return [];
+	})->middleware('auth')->name('admin-site-menus');
 
-Admin::routes();
-Auth::routes();
-Route::get('/profile', function () {
-    return redirect(Luban::config()->get('sso_url').'profile');
-})->name('admin-profile');
+	Route::get('/home', ['as'=>'home','uses' => 'HomeController@index']);
+	
 
-Route::get('/admin-site-menus', function(){
-	return [];
-})->middleware('auth')->name('admin-site-menus');
-
-Route::get('/home', 'HomeController@index')->name('home');
+	Route::Group(['middleware'=>'permission'],function(){
+		Admin::routes();
+		Route::resource('admin/user', 'Admin\\UserController');
+	});
+// });
