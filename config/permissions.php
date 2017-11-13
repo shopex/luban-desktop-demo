@@ -10,29 +10,21 @@ return [
     */
 	'defaults'=>[
 		'router'=>'shopadmin',
-		'data'=>'org',
+		'data' => App\User::class,
 	],
 	'data' => [
-		'org' => [
-			'repositroy' => App\Group::class,
-			'manger' => App\GroupManger::class,
-			'resources' => [
-				["name" => App\Shop::class,'resource_id'=>'shop_id'],
-				["name" => App\Order::class,'resource_id'=>'shop_id']
+		App\User::class => [
+			App\Goods::class => [
+				'name'=>'商品',
+				'permissions' => [
+					'all'    => ['name'=>'全部','type'=>'all'],
+					'creater'=> ['name'=>'自己创建','type'=>'field','field'=>'create_id'],
+					'shop_id'=> ['name'=>'指定店铺','type'=>'model','model'=>App\Shop::class],
+					'cat_id' => ['name'=>'指定分类','type'=>'func','func'=>[App\Shop::class,'getId']],
+				]
 			],
-			'proxy'=> App\PermissionUser::class,
-			'user' => App\User::class,
 		],
-		'shop' => [
-			'repositroy' => App\Group::class,
-			'manger' => App\GroupManger::class,
-			'resources' => [
-				["name" => App\Shop::class,'resource_id'=>'shop_id'],
-				["name" => App\Order::class,'resource_id'=>'shop_id']
-			],
-			'proxy' => App\PermissionUser::class,
-			'user' => App\User::class,
-		],
+		
 	],
 	'router'=>[
 		'shopadmin'=>[
@@ -44,7 +36,10 @@ return [
 					'users.deteil' => ['name'=>'用户详情','routes'=>['users.show'] ],
 					'users.update' => ['name'=>'用户编辑','routes'=>['users.edit','users.update']],
 					'users.delete' => ['name'=>'用户删除','routes'=>['users.destroy']],
-				]
+				],
+				'models'=>[
+					App\Goods::class,
+				],
 			],
 			[	
 				'group'=>'角色',
@@ -54,6 +49,16 @@ return [
 					'roles.deteil' => ['name'=>'角色详情','routes'=>['roles.show'] ],
 					'roles.update' => ['name'=>'角色编辑','routes'=>['roles.edit','roles.update']],
 					'roles.delete' => ['name'=>'角色删除','routes'=>['roles.destroy']],
+				]
+			],
+			[	
+				'group'=>'店铺',
+				'permissions'=>[
+					'shop.list' =>   ['name'=>'角色列表','routes'=>['shop.index'] ],
+					'shop.add' =>    ['name'=>'角色新增','routes'=>['shop.create','shop.store'] ],
+					'shop.deteil' => ['name'=>'角色详情','routes'=>['shop.show'] ],
+					'shop.update' => ['name'=>'角色编辑','routes'=>['shop.edit','shop.update']],
+					'shop.delete' => ['name'=>'角色删除','routes'=>['shop.destroy']],
 				]
 			],
 			[	
