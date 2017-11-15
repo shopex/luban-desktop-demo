@@ -14,16 +14,17 @@ return [
 	],
 	'data' => [
 		App\User::class => [
-			App\Goods::class => [
+			App\Models\Entity\Goods::class => [
 				'name'=>'商品',
 				'permissions' => [
 					'all'    => ['name'=>'全部','type'=>'all'],
-					'creater'=> ['name'=>'自己创建','type'=>'field','field'=>'create_id'],
-					'shop_id'=> ['name'=>'指定店铺','type'=>'model','model'=>App\Shop::class],
-					'cat_id' => ['name'=>'指定分类','type'=>'func','func'=>[App\Shop::class,'getId']],
+					'creater'=> ['name'=>'自己创建','type'=>'field','field'=>'cat_id'],
+					'shop_id'=> ['name'=>'指定店铺','type'=>'model','field'=>'shop_id','model'=>App\Shop::class],
+					'cat_id' => ['name'=>'指定分类','type'=>'func','field'=>'cat_id','func'=>[App\Shop::class,'getId',[1,2]]],
 				]
 			],
 		],
+		
 		
 	],
 	'router'=>[
@@ -37,29 +38,39 @@ return [
 					'users.update' => ['name'=>'用户编辑','routes'=>['users.edit','users.update']],
 					'users.delete' => ['name'=>'用户删除','routes'=>['users.destroy']],
 				],
-				'models'=>[
-					App\Goods::class,
+			],
+			// [	
+			// 	'group'=>'角色',
+			// 	'permissions'=>[
+			// 		'roles.list' =>   ['name'=>'角色列表','routes'=>['roles.index'] ],
+			// 		'roles.add' =>    ['name'=>'角色新增','routes'=>['roles.create','roles.store'] ],
+			// 		'roles.deteil' => ['name'=>'角色详情','routes'=>['roles.show'] ],
+			// 		'roles.update' => ['name'=>'角色编辑','routes'=>['roles.edit','roles.update']],
+			// 		'roles.delete' => ['name'=>'角色删除','routes'=>['roles.destroy']],
+			// 	]
+			// ],
+			// [	
+			// 	'group'=>'店铺',
+			// 	'permissions'=>[
+			// 		'shop.list' =>   ['name'=>'角色列表','routes'=>['shop.index'] ],
+			// 		'shop.add' =>    ['name'=>'角色新增','routes'=>['shop.create','shop.store'] ],
+			// 		'shop.deteil' => ['name'=>'角色详情','routes'=>['shop.show'] ],
+			// 		'shop.update' => ['name'=>'角色编辑','routes'=>['shop.edit','shop.update']],
+			// 		'shop.delete' => ['name'=>'角色删除','routes'=>['shop.destroy']],
+			// 	]
+			// ],
+			[	
+				'group'=>'商品',
+				'permissions'=>[
+					'goods.list' =>   ['name'=>'商品列表','routes'=>['goods.index'] ],
+					'goods.add' =>    ['name'=>'商品新增','routes'=>['goods.create','goods.store'] ],
+					'goods.deteil' => ['name'=>'商品详情','routes'=>['goods.show'] ],
+					'goods.update' => ['name'=>'商品编辑','routes'=>['goods.edit','goods.update']],
+					'goods.delete' => ['name'=>'商品删除','routes'=>['goods.destroy']],
 				],
-			],
-			[	
-				'group'=>'角色',
-				'permissions'=>[
-					'roles.list' =>   ['name'=>'角色列表','routes'=>['roles.index'] ],
-					'roles.add' =>    ['name'=>'角色新增','routes'=>['roles.create','roles.store'] ],
-					'roles.deteil' => ['name'=>'角色详情','routes'=>['roles.show'] ],
-					'roles.update' => ['name'=>'角色编辑','routes'=>['roles.edit','roles.update']],
-					'roles.delete' => ['name'=>'角色删除','routes'=>['roles.destroy']],
-				]
-			],
-			[	
-				'group'=>'店铺',
-				'permissions'=>[
-					'shop.list' =>   ['name'=>'角色列表','routes'=>['shop.index'] ],
-					'shop.add' =>    ['name'=>'角色新增','routes'=>['shop.create','shop.store'] ],
-					'shop.deteil' => ['name'=>'角色详情','routes'=>['shop.show'] ],
-					'shop.update' => ['name'=>'角色编辑','routes'=>['shop.edit','shop.update']],
-					'shop.delete' => ['name'=>'角色删除','routes'=>['shop.destroy']],
-				]
+				'models'=>[
+					App\Models\Entity\Goods::class
+				],
 			],
 			[	
 				'group'=>'代码生成',

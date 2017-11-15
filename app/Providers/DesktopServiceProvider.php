@@ -3,6 +3,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Shopex\LubanAdmin\Permission\Menu;
+use App\Role;
+use Shopex\LubanAdmin\Facades\Admin;
 class DesktopServiceProvider extends ServiceProvider
 {
     /**
@@ -17,11 +19,10 @@ class DesktopServiceProvider extends ServiceProvider
         
         view()->share('app_menus', config('desktop.menus'));
 
-        view()->share('searchbar', [
-                ['label'=>'搜索用户', 'action'=>'/search/user', 'regexp'=>'[a-z0-9\.\_\+\-]'],
-                ['label'=>'搜索手机号', 'action'=>'/search/phone', 'regexp'=>'^[0-9\s]+$'],
-                ['label'=>'搜索邮箱', 'action'=>'/search/email', 'regexp'=>'^[a-z0-9\.\_\+\-]+@[a-z0-9\.\_\-]+$'],
-            ]);
+        view()->share('searchbar', config('desktop.searchbar'));
+
+        $objcect = config('input.object');
+        $objcect();
     }
 
     /**

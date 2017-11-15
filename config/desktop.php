@@ -16,10 +16,20 @@ return [
 	            ['label'=>'用户', 'route'=>'users.index', 'params'=>[] ],
 	            ['label'=>'角色', 'route'=>'roles.index', 'params'=>[]],
 	    ]],
+	    ['label'=> '商家',  'items'=>[
+	            ['label'=>'店铺', 'route'=>'shop.index', 'params'=>[] ],
+	            ['label'=>'商品', 'route'=>'goods.index', 'params'=>[]],
+	            ['label'=>'订单', 'route'=>'order.index', 'params'=>[]],
+	    ]],
 	    ['label'=> '开发者工具',  'items'=>[
 	            ['label'=>'代码生成', 'route'=>'admin.generator.index','params'=>[] ],
 	    ]],
 
 	],
+	'searchbar'=>[
+	    ['label'=>'搜索用户', 'action'=>'/search/user', 'regexp'=>'[a-z0-9\.\_\+\-]'],
+	    ['label'=>'搜索手机号', 'action'=>'/search/phone', 'regexp'=>'^[0-9\s]+$'],
+	    ['label'=>'搜索邮箱', 'action'=>'/search/email', 'regexp'=>'^[a-z0-9\.\_\+\-]+@[a-z0-9\.\_\-]+$'],
+	]
 
 ];
