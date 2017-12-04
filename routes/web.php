@@ -29,6 +29,8 @@
 
 	Route::Group(['middleware'=>'permission'],function(){
 		Admin::routes();
+		Admin::super_routes();
 		Route::resource('admin/user', 'Admin\\UserController');
 	});
 // });
+
