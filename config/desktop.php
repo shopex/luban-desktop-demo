@@ -16,11 +16,6 @@ return [
 	            ['label'=>'用户', 'route'=>'users.index', 'params'=>[] ],
 	            ['label'=>'角色', 'route'=>'roles.index', 'params'=>[]],
 	    ]],
-	    ['label'=> '商家',  'items'=>[
-	            ['label'=>'店铺', 'route'=>'shop.index', 'params'=>[] ],
-	            ['label'=>'商品', 'route'=>'goods.index', 'params'=>[]],
-	            ['label'=>'订单', 'route'=>'order.index', 'params'=>[]],
-	    ]],
 	    ['label'=> '开发者工具',  'items'=>[
 	            ['label'=>'代码生成', 'route'=>'admin.generator.index','params'=>[] ],
 	    ]],
