@@ -12,6 +12,9 @@ return [
 				['label'=>'菜单', 'link'=>'/'],
 				['label'=>'菜单', 'link'=>'/'],
 		]],
+		['label'=> '信息',  'items'=>[
+	            ['label'=>'分类', 'route'=>'cat.index', 'params'=>[] ],
+	    ]],
 	    ['label'=> '权限',  'items'=>[
 	            ['label'=>'用户', 'route'=>'users.index', 'params'=>[] ],
 	            ['label'=>'角色', 'route'=>'roles.index', 'params'=>[]],

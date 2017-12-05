@@ -33,3 +33,27 @@ composer.lock
 # resources/assets/js/components/searchbar.vue
 # resources/assets/js/ui.js
 # resources/crud-generator/
+.phpintel/
+app/DataPermission.php
+app/HasRoles.php
+app/Http/Controllers/Auth/
+app/Http/Middleware/CheckPermission.php
+app/Http/Middleware/CheckRole.php
+app/Permission.php
+app/Role.php
+app/Scopes/
+app/User.php
+database/migrations/2016_01_01_193651_create_roles_permissions_tables.php
+database/migrations/2017_08_14_120030_create_login_sessions_table.php
+database/migrations/2017_10_25_101806_create_generator_table.php
+database/migrations/2017_11_07_061722_roles_table_permissions.php
+database/migrations/2017_11_10_080747_roles_table_datas.php
+database/migrations/2017_11_13_033416_user_roles_data.php
+package-lock.json
+public/css/
+public/fonts/
+public/js/
+public/mix-manifest.json
+resources/assets/vendor/
+resources/crud-generator/
+resources/views/vendor/

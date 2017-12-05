@@ -34,3 +34,5 @@
 	});
 // });
 
+
+Route::resource('admin/cat', 'Admin\\CatController');
